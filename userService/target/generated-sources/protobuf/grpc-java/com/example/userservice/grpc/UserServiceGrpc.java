@@ -232,6 +232,130 @@ public final class UserServiceGrpc {
     return getListTicketsMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<com.example.userservice.grpc.UploadMovieRequest,
+      com.example.userservice.grpc.MovieResponse> getUploadMovieMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "UploadMovie",
+      requestType = com.example.userservice.grpc.UploadMovieRequest.class,
+      responseType = com.example.userservice.grpc.MovieResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.example.userservice.grpc.UploadMovieRequest,
+      com.example.userservice.grpc.MovieResponse> getUploadMovieMethod() {
+    io.grpc.MethodDescriptor<com.example.userservice.grpc.UploadMovieRequest, com.example.userservice.grpc.MovieResponse> getUploadMovieMethod;
+    if ((getUploadMovieMethod = UserServiceGrpc.getUploadMovieMethod) == null) {
+      synchronized (UserServiceGrpc.class) {
+        if ((getUploadMovieMethod = UserServiceGrpc.getUploadMovieMethod) == null) {
+          UserServiceGrpc.getUploadMovieMethod = getUploadMovieMethod =
+              io.grpc.MethodDescriptor.<com.example.userservice.grpc.UploadMovieRequest, com.example.userservice.grpc.MovieResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "UploadMovie"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.example.userservice.grpc.UploadMovieRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.example.userservice.grpc.MovieResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new UserServiceMethodDescriptorSupplier("UploadMovie"))
+              .build();
+        }
+      }
+    }
+    return getUploadMovieMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<com.example.userservice.grpc.UploadMoviesRequest,
+      com.example.userservice.grpc.UploadMoviesResponse> getUploadMoviesMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "UploadMovies",
+      requestType = com.example.userservice.grpc.UploadMoviesRequest.class,
+      responseType = com.example.userservice.grpc.UploadMoviesResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.example.userservice.grpc.UploadMoviesRequest,
+      com.example.userservice.grpc.UploadMoviesResponse> getUploadMoviesMethod() {
+    io.grpc.MethodDescriptor<com.example.userservice.grpc.UploadMoviesRequest, com.example.userservice.grpc.UploadMoviesResponse> getUploadMoviesMethod;
+    if ((getUploadMoviesMethod = UserServiceGrpc.getUploadMoviesMethod) == null) {
+      synchronized (UserServiceGrpc.class) {
+        if ((getUploadMoviesMethod = UserServiceGrpc.getUploadMoviesMethod) == null) {
+          UserServiceGrpc.getUploadMoviesMethod = getUploadMoviesMethod =
+              io.grpc.MethodDescriptor.<com.example.userservice.grpc.UploadMoviesRequest, com.example.userservice.grpc.UploadMoviesResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "UploadMovies"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.example.userservice.grpc.UploadMoviesRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.example.userservice.grpc.UploadMoviesResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new UserServiceMethodDescriptorSupplier("UploadMovies"))
+              .build();
+        }
+      }
+    }
+    return getUploadMoviesMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<com.example.userservice.grpc.ListMoviesRequest,
+      com.example.userservice.grpc.ListMoviesResponse> getListMoviesMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "ListMovies",
+      requestType = com.example.userservice.grpc.ListMoviesRequest.class,
+      responseType = com.example.userservice.grpc.ListMoviesResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.example.userservice.grpc.ListMoviesRequest,
+      com.example.userservice.grpc.ListMoviesResponse> getListMoviesMethod() {
+    io.grpc.MethodDescriptor<com.example.userservice.grpc.ListMoviesRequest, com.example.userservice.grpc.ListMoviesResponse> getListMoviesMethod;
+    if ((getListMoviesMethod = UserServiceGrpc.getListMoviesMethod) == null) {
+      synchronized (UserServiceGrpc.class) {
+        if ((getListMoviesMethod = UserServiceGrpc.getListMoviesMethod) == null) {
+          UserServiceGrpc.getListMoviesMethod = getListMoviesMethod =
+              io.grpc.MethodDescriptor.<com.example.userservice.grpc.ListMoviesRequest, com.example.userservice.grpc.ListMoviesResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ListMovies"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.example.userservice.grpc.ListMoviesRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.example.userservice.grpc.ListMoviesResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new UserServiceMethodDescriptorSupplier("ListMovies"))
+              .build();
+        }
+      }
+    }
+    return getListMoviesMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<com.example.userservice.grpc.GetMovieStreamRequest,
+      com.example.userservice.grpc.MovieStreamResponse> getGetMovieStreamMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "GetMovieStream",
+      requestType = com.example.userservice.grpc.GetMovieStreamRequest.class,
+      responseType = com.example.userservice.grpc.MovieStreamResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.example.userservice.grpc.GetMovieStreamRequest,
+      com.example.userservice.grpc.MovieStreamResponse> getGetMovieStreamMethod() {
+    io.grpc.MethodDescriptor<com.example.userservice.grpc.GetMovieStreamRequest, com.example.userservice.grpc.MovieStreamResponse> getGetMovieStreamMethod;
+    if ((getGetMovieStreamMethod = UserServiceGrpc.getGetMovieStreamMethod) == null) {
+      synchronized (UserServiceGrpc.class) {
+        if ((getGetMovieStreamMethod = UserServiceGrpc.getGetMovieStreamMethod) == null) {
+          UserServiceGrpc.getGetMovieStreamMethod = getGetMovieStreamMethod =
+              io.grpc.MethodDescriptor.<com.example.userservice.grpc.GetMovieStreamRequest, com.example.userservice.grpc.MovieStreamResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetMovieStream"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.example.userservice.grpc.GetMovieStreamRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.example.userservice.grpc.MovieStreamResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new UserServiceMethodDescriptorSupplier("GetMovieStream"))
+              .build();
+        }
+      }
+    }
+    return getGetMovieStreamMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -331,6 +455,37 @@ public final class UserServiceGrpc {
         io.grpc.stub.StreamObserver<com.example.userservice.grpc.ListTicketsResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getListTicketsMethod(), responseObserver);
     }
+
+    /**
+     * <pre>
+     * Movie-related methods
+     * </pre>
+     */
+    default void uploadMovie(com.example.userservice.grpc.UploadMovieRequest request,
+        io.grpc.stub.StreamObserver<com.example.userservice.grpc.MovieResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getUploadMovieMethod(), responseObserver);
+    }
+
+    /**
+     */
+    default void uploadMovies(com.example.userservice.grpc.UploadMoviesRequest request,
+        io.grpc.stub.StreamObserver<com.example.userservice.grpc.UploadMoviesResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getUploadMoviesMethod(), responseObserver);
+    }
+
+    /**
+     */
+    default void listMovies(com.example.userservice.grpc.ListMoviesRequest request,
+        io.grpc.stub.StreamObserver<com.example.userservice.grpc.ListMoviesResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getListMoviesMethod(), responseObserver);
+    }
+
+    /**
+     */
+    default void getMovieStream(com.example.userservice.grpc.GetMovieStreamRequest request,
+        io.grpc.stub.StreamObserver<com.example.userservice.grpc.MovieStreamResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetMovieStreamMethod(), responseObserver);
+    }
   }
 
   /**
@@ -418,6 +573,41 @@ public final class UserServiceGrpc {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getListTicketsMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     * <pre>
+     * Movie-related methods
+     * </pre>
+     */
+    public void uploadMovie(com.example.userservice.grpc.UploadMovieRequest request,
+        io.grpc.stub.StreamObserver<com.example.userservice.grpc.MovieResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getUploadMovieMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void uploadMovies(com.example.userservice.grpc.UploadMoviesRequest request,
+        io.grpc.stub.StreamObserver<com.example.userservice.grpc.UploadMoviesResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getUploadMoviesMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void listMovies(com.example.userservice.grpc.ListMoviesRequest request,
+        io.grpc.stub.StreamObserver<com.example.userservice.grpc.ListMoviesResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getListMoviesMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void getMovieStream(com.example.userservice.grpc.GetMovieStreamRequest request,
+        io.grpc.stub.StreamObserver<com.example.userservice.grpc.MovieStreamResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getGetMovieStreamMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -486,6 +676,37 @@ public final class UserServiceGrpc {
     public com.example.userservice.grpc.ListTicketsResponse listTickets(com.example.userservice.grpc.ListTicketsRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getListTicketsMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * Movie-related methods
+     * </pre>
+     */
+    public com.example.userservice.grpc.MovieResponse uploadMovie(com.example.userservice.grpc.UploadMovieRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getUploadMovieMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.example.userservice.grpc.UploadMoviesResponse uploadMovies(com.example.userservice.grpc.UploadMoviesRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getUploadMoviesMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.example.userservice.grpc.ListMoviesResponse listMovies(com.example.userservice.grpc.ListMoviesRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getListMoviesMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.example.userservice.grpc.MovieStreamResponse getMovieStream(com.example.userservice.grpc.GetMovieStreamRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getGetMovieStreamMethod(), getCallOptions(), request);
     }
   }
 
@@ -563,6 +784,41 @@ public final class UserServiceGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getListTicketsMethod(), getCallOptions()), request);
     }
+
+    /**
+     * <pre>
+     * Movie-related methods
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.example.userservice.grpc.MovieResponse> uploadMovie(
+        com.example.userservice.grpc.UploadMovieRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getUploadMovieMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.example.userservice.grpc.UploadMoviesResponse> uploadMovies(
+        com.example.userservice.grpc.UploadMoviesRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getUploadMoviesMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.example.userservice.grpc.ListMoviesResponse> listMovies(
+        com.example.userservice.grpc.ListMoviesRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getListMoviesMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.example.userservice.grpc.MovieStreamResponse> getMovieStream(
+        com.example.userservice.grpc.GetMovieStreamRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getGetMovieStreamMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_CREATE_USER = 0;
@@ -572,6 +828,10 @@ public final class UserServiceGrpc {
   private static final int METHODID_LIST_USERS = 4;
   private static final int METHODID_CREATE_TICKET = 5;
   private static final int METHODID_LIST_TICKETS = 6;
+  private static final int METHODID_UPLOAD_MOVIE = 7;
+  private static final int METHODID_UPLOAD_MOVIES = 8;
+  private static final int METHODID_LIST_MOVIES = 9;
+  private static final int METHODID_GET_MOVIE_STREAM = 10;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -617,6 +877,22 @@ public final class UserServiceGrpc {
         case METHODID_LIST_TICKETS:
           serviceImpl.listTickets((com.example.userservice.grpc.ListTicketsRequest) request,
               (io.grpc.stub.StreamObserver<com.example.userservice.grpc.ListTicketsResponse>) responseObserver);
+          break;
+        case METHODID_UPLOAD_MOVIE:
+          serviceImpl.uploadMovie((com.example.userservice.grpc.UploadMovieRequest) request,
+              (io.grpc.stub.StreamObserver<com.example.userservice.grpc.MovieResponse>) responseObserver);
+          break;
+        case METHODID_UPLOAD_MOVIES:
+          serviceImpl.uploadMovies((com.example.userservice.grpc.UploadMoviesRequest) request,
+              (io.grpc.stub.StreamObserver<com.example.userservice.grpc.UploadMoviesResponse>) responseObserver);
+          break;
+        case METHODID_LIST_MOVIES:
+          serviceImpl.listMovies((com.example.userservice.grpc.ListMoviesRequest) request,
+              (io.grpc.stub.StreamObserver<com.example.userservice.grpc.ListMoviesResponse>) responseObserver);
+          break;
+        case METHODID_GET_MOVIE_STREAM:
+          serviceImpl.getMovieStream((com.example.userservice.grpc.GetMovieStreamRequest) request,
+              (io.grpc.stub.StreamObserver<com.example.userservice.grpc.MovieStreamResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -685,6 +961,34 @@ public final class UserServiceGrpc {
               com.example.userservice.grpc.ListTicketsRequest,
               com.example.userservice.grpc.ListTicketsResponse>(
                 service, METHODID_LIST_TICKETS)))
+        .addMethod(
+          getUploadMovieMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              com.example.userservice.grpc.UploadMovieRequest,
+              com.example.userservice.grpc.MovieResponse>(
+                service, METHODID_UPLOAD_MOVIE)))
+        .addMethod(
+          getUploadMoviesMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              com.example.userservice.grpc.UploadMoviesRequest,
+              com.example.userservice.grpc.UploadMoviesResponse>(
+                service, METHODID_UPLOAD_MOVIES)))
+        .addMethod(
+          getListMoviesMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              com.example.userservice.grpc.ListMoviesRequest,
+              com.example.userservice.grpc.ListMoviesResponse>(
+                service, METHODID_LIST_MOVIES)))
+        .addMethod(
+          getGetMovieStreamMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              com.example.userservice.grpc.GetMovieStreamRequest,
+              com.example.userservice.grpc.MovieStreamResponse>(
+                service, METHODID_GET_MOVIE_STREAM)))
         .build();
   }
 
@@ -740,6 +1044,10 @@ public final class UserServiceGrpc {
               .addMethod(getListUsersMethod())
               .addMethod(getCreateTicketMethod())
               .addMethod(getListTicketsMethod())
+              .addMethod(getUploadMovieMethod())
+              .addMethod(getUploadMoviesMethod())
+              .addMethod(getListMoviesMethod())
+              .addMethod(getGetMovieStreamMethod())
               .build();
         }
       }

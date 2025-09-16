@@ -4,18 +4,27 @@ import io.grpc.stub.StreamObserver;
 import com.example.userservice.grpc.UserServiceGrpc;
 import com.example.userservice.model.User;
 import com.example.userservice.model.Ticket;
+import com.example.userservice.model.Movie;
+import com.example.userservice.model.StreamQuality;
 import com.example.userservice.repository.UserRepository;
 import com.example.userservice.repository.TicketRepository;
+import com.example.userservice.repository.MovieRepository;
+import com.example.userservice.service.VideoProcessingService;
 import java.sql.*;
 import java.util.List;
+import java.util.ArrayList;
 
 public class UserServiceImpl extends UserServiceGrpc.UserServiceImplBase {
     private final UserRepository userRepository;
     private final TicketRepository ticketRepository;
+    private final MovieRepository movieRepository;
+    private final VideoProcessingService videoProcessingService;
 
     public UserServiceImpl(Connection connection) {
         this.userRepository = new UserRepository(connection);
         this.ticketRepository = new TicketRepository(connection);
+        this.movieRepository = new MovieRepository(connection);
+        this.videoProcessingService = new VideoProcessingService();
     }
 
     @Override
@@ -142,6 +151,92 @@ public class UserServiceImpl extends UserServiceGrpc.UserServiceImplBase {
         }
     }
 
+    @Override
+    public void uploadMovie(UploadMovieRequest request, StreamObserver<MovieResponse> responseObserver) {
+        try {
+            Movie movie = new Movie(null, request.getTitle(), request.getDescription(),
+                request.getFileData().toByteArray(), request.getFileName(), request.getContentType());
+            movie = movieRepository.save(movie);
+
+            // Process video for adaptive streaming in background
+            // In production, this would be done asynchronously
+            videoProcessingService.processVideoForStreaming(movie);
+            movieRepository.updateStreamingInfo(movie.getId(), movie.getMasterPlaylistUrl(), movie.getQualities());
+
+            MovieResponse response = MovieResponse.newBuilder().setMovie(toProtoMovie(movie)).build();
+            responseObserver.onNext(response);
+            responseObserver.onCompleted();
+        } catch (SQLException e) {
+            responseObserver.onError(e);
+        }
+    }
+
+    @Override
+    public void uploadMovies(UploadMoviesRequest request, StreamObserver<UploadMoviesResponse> responseObserver) {
+        try {
+            List<Movie> uploadedMovies = new ArrayList<>();
+            for (UploadMovieRequest movieRequest : request.getMoviesList()) {
+                Movie movie = new Movie(null, movieRequest.getTitle(), movieRequest.getDescription(),
+                    movieRequest.getFileData().toByteArray(), movieRequest.getFileName(), movieRequest.getContentType());
+                movie = movieRepository.save(movie);
+
+                // Process video for adaptive streaming
+                videoProcessingService.processVideoForStreaming(movie);
+                movieRepository.updateStreamingInfo(movie.getId(), movie.getMasterPlaylistUrl(), movie.getQualities());
+
+                uploadedMovies.add(movie);
+            }
+            UploadMoviesResponse.Builder builder = UploadMoviesResponse.newBuilder()
+                .setUploadedCount(uploadedMovies.size());
+            for (Movie movie : uploadedMovies) {
+                builder.addMovies(toProtoMovie(movie));
+            }
+            responseObserver.onNext(builder.build());
+            responseObserver.onCompleted();
+        } catch (SQLException e) {
+            responseObserver.onError(e);
+        }
+    }
+
+    @Override
+    public void listMovies(ListMoviesRequest request, StreamObserver<ListMoviesResponse> responseObserver) {
+        try {
+            List<Movie> movies = movieRepository.findAll();
+            ListMoviesResponse.Builder builder = ListMoviesResponse.newBuilder();
+            for (Movie movie : movies) {
+                builder.addMovies(toProtoMovie(movie));
+            }
+            responseObserver.onNext(builder.build());
+            responseObserver.onCompleted();
+        } catch (SQLException e) {
+            responseObserver.onError(e);
+        }
+    }
+
+    @Override
+    public void getMovieStream(GetMovieStreamRequest request, StreamObserver<MovieStreamResponse> responseObserver) {
+        try {
+            Movie movie = movieRepository.findById(request.getMovieId());
+            if (movie == null) {
+                responseObserver.onError(new Exception("Movie not found"));
+                return;
+            }
+
+            MovieStreamResponse.Builder builder = MovieStreamResponse.newBuilder()
+                .setMasterPlaylistUrl(movie.getMasterPlaylistUrl() != null ? movie.getMasterPlaylistUrl() : "")
+                .setProcessedForStreaming(movie.isProcessedForStreaming());
+
+            for (StreamQuality quality : movie.getQualities()) {
+                builder.addQualities(toProtoStreamQuality(quality));
+            }
+
+            responseObserver.onNext(builder.build());
+            responseObserver.onCompleted();
+        } catch (SQLException e) {
+            responseObserver.onError(e);
+        }
+    }
+
     // Helper: Convert internal User to proto User
     private com.example.userservice.grpc.User toProtoUser(User user) {
         com.example.userservice.grpc.User.Builder builder = com.example.userservice.grpc.User.newBuilder()
@@ -160,6 +255,36 @@ public class UserServiceImpl extends UserServiceGrpc.UserServiceImplBase {
                 .setTicketId(ticket.getTicketId())
                 .setUserId(ticket.getUserId())
                 .setMovieName(ticket.getMovieName())
+                .build();
+    }
+
+    // Helper: Convert internal Movie to proto Movie
+    private com.example.userservice.grpc.Movie toProtoMovie(Movie movie) {
+        com.example.userservice.grpc.Movie.Builder builder = com.example.userservice.grpc.Movie.newBuilder()
+                .setId(movie.getId())
+                .setTitle(movie.getTitle())
+                .setDescription(movie.getDescription())
+                .setFileData(com.google.protobuf.ByteString.copyFrom(movie.getFileData()))
+                .setFileName(movie.getFileName())
+                .setContentType(movie.getContentType())
+                .setMasterPlaylistUrl(movie.getMasterPlaylistUrl() != null ? movie.getMasterPlaylistUrl() : "")
+                .setProcessedForStreaming(movie.isProcessedForStreaming());
+
+        for (StreamQuality quality : movie.getQualities()) {
+            builder.addQualities(toProtoStreamQuality(quality));
+        }
+
+        return builder.build();
+    }
+
+    // Helper: Convert internal StreamQuality to proto StreamQuality
+    private com.example.userservice.grpc.StreamQuality toProtoStreamQuality(StreamQuality quality) {
+        return com.example.userservice.grpc.StreamQuality.newBuilder()
+                .setResolution(quality.getResolution())
+                .setBandwidth(quality.getBandwidth())
+                .setPlaylistUrl(quality.getPlaylistUrl())
+                .setWidth(quality.getWidth())
+                .setHeight(quality.getHeight())
                 .build();
     }
 

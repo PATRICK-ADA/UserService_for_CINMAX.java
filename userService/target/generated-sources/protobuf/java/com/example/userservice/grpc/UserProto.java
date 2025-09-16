@@ -85,6 +85,56 @@ public final class UserProto {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_ListTicketsResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Movie_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Movie_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_StreamQuality_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_StreamQuality_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_UploadMovieRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_UploadMovieRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_MovieResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_MovieResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_UploadMoviesRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_UploadMoviesRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_UploadMoviesResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_UploadMoviesResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ListMoviesRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_ListMoviesRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ListMoviesResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_ListMoviesResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_GetMovieStreamRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_GetMovieStreamRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_MovieStreamResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_MovieStreamResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -110,18 +160,45 @@ public final class UserProto {
       "e\030\002 \001(\t\")\n\016TicketResponse\022\027\n\006ticket\030\001 \001(" +
       "\0132\007.Ticket\"%\n\022ListTicketsRequest\022\017\n\007user" +
       "_id\030\001 \001(\003\"/\n\023ListTicketsResponse\022\030\n\007tick" +
-      "ets\030\001 \003(\0132\007.Ticket2\366\002\n\013UserService\022/\n\nCr" +
-      "eateUser\022\022.CreateUserRequest\032\r.UserRespo" +
-      "nse\022)\n\007GetUser\022\017.GetUserRequest\032\r.UserRe" +
-      "sponse\022/\n\nUpdateUser\022\022.UpdateUserRequest" +
-      "\032\r.UserResponse\0225\n\nDeleteUser\022\022.DeleteUs" +
-      "erRequest\032\023.DeleteUserResponse\0222\n\tListUs" +
-      "ers\022\021.ListUsersRequest\032\022.ListUsersRespon" +
-      "se\0225\n\014CreateTicket\022\024.CreateTicketRequest" +
-      "\032\017.TicketResponse\0228\n\013ListTickets\022\023.ListT" +
-      "icketsRequest\032\024.ListTicketsResponseB+\n\034c" +
-      "om.example.userservice.grpcB\tUserProtoP\001" +
-      "b\006proto3"
+      "ets\030\001 \003(\0132\007.Ticket\"\324\001\n\005Movie\022\n\n\002id\030\001 \001(\003" +
+      "\022\r\n\005title\030\002 \001(\t\022\023\n\013description\030\003 \001(\t\022\021\n\t" +
+      "file_data\030\004 \001(\014\022\021\n\tfile_name\030\005 \001(\t\022\024\n\014co" +
+      "ntent_type\030\006 \001(\t\022\033\n\023master_playlist_url\030" +
+      "\007 \001(\t\022!\n\tqualities\030\010 \003(\0132\016.StreamQuality" +
+      "\022\037\n\027processed_for_streaming\030\t \001(\010\"k\n\rStr" +
+      "eamQuality\022\022\n\nresolution\030\001 \001(\t\022\021\n\tbandwi" +
+      "dth\030\002 \001(\003\022\024\n\014playlist_url\030\003 \001(\t\022\r\n\005width" +
+      "\030\004 \001(\005\022\016\n\006height\030\005 \001(\005\"t\n\022UploadMovieReq" +
+      "uest\022\r\n\005title\030\001 \001(\t\022\023\n\013description\030\002 \001(\t" +
+      "\022\021\n\tfile_data\030\003 \001(\014\022\021\n\tfile_name\030\004 \001(\t\022\024" +
+      "\n\014content_type\030\005 \001(\t\"&\n\rMovieResponse\022\025\n" +
+      "\005movie\030\001 \001(\0132\006.Movie\":\n\023UploadMoviesRequ" +
+      "est\022#\n\006movies\030\001 \003(\0132\023.UploadMovieRequest" +
+      "\"F\n\024UploadMoviesResponse\022\026\n\006movies\030\002 \003(\013" +
+      "2\006.Movie\022\026\n\016uploaded_count\030\003 \001(\005\"\023\n\021List" +
+      "MoviesRequest\",\n\022ListMoviesResponse\022\026\n\006m" +
+      "ovies\030\001 \003(\0132\006.Movie\")\n\025GetMovieStreamReq" +
+      "uest\022\020\n\010movie_id\030\001 \001(\003\"v\n\023MovieStreamRes" +
+      "ponse\022\033\n\023master_playlist_url\030\001 \001(\t\022!\n\tqu" +
+      "alities\030\002 \003(\0132\016.StreamQuality\022\037\n\027process" +
+      "ed_for_streaming\030\003 \001(\0102\336\004\n\013UserService\022/" +
+      "\n\nCreateUser\022\022.CreateUserRequest\032\r.UserR" +
+      "esponse\022)\n\007GetUser\022\017.GetUserRequest\032\r.Us" +
+      "erResponse\022/\n\nUpdateUser\022\022.UpdateUserReq" +
+      "uest\032\r.UserResponse\0225\n\nDeleteUser\022\022.Dele" +
+      "teUserRequest\032\023.DeleteUserResponse\0222\n\tLi" +
+      "stUsers\022\021.ListUsersRequest\032\022.ListUsersRe" +
+      "sponse\0225\n\014CreateTicket\022\024.CreateTicketReq" +
+      "uest\032\017.TicketResponse\0228\n\013ListTickets\022\023.L" +
+      "istTicketsRequest\032\024.ListTicketsResponse\022" +
+      "2\n\013UploadMovie\022\023.UploadMovieRequest\032\016.Mo" +
+      "vieResponse\022;\n\014UploadMovies\022\024.UploadMovi" +
+      "esRequest\032\025.UploadMoviesResponse\0225\n\nList" +
+      "Movies\022\022.ListMoviesRequest\032\023.ListMoviesR" +
+      "esponse\022>\n\016GetMovieStream\022\026.GetMovieStre" +
+      "amRequest\032\024.MovieStreamResponseB+\n\034com.e" +
+      "xample.userservice.grpcB\tUserProtoP\001b\006pr" +
+      "oto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -211,6 +288,66 @@ public final class UserProto {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ListTicketsResponse_descriptor,
         new java.lang.String[] { "Tickets", });
+    internal_static_Movie_descriptor =
+      getDescriptor().getMessageTypes().get(14);
+    internal_static_Movie_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Movie_descriptor,
+        new java.lang.String[] { "Id", "Title", "Description", "FileData", "FileName", "ContentType", "MasterPlaylistUrl", "Qualities", "ProcessedForStreaming", });
+    internal_static_StreamQuality_descriptor =
+      getDescriptor().getMessageTypes().get(15);
+    internal_static_StreamQuality_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_StreamQuality_descriptor,
+        new java.lang.String[] { "Resolution", "Bandwidth", "PlaylistUrl", "Width", "Height", });
+    internal_static_UploadMovieRequest_descriptor =
+      getDescriptor().getMessageTypes().get(16);
+    internal_static_UploadMovieRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_UploadMovieRequest_descriptor,
+        new java.lang.String[] { "Title", "Description", "FileData", "FileName", "ContentType", });
+    internal_static_MovieResponse_descriptor =
+      getDescriptor().getMessageTypes().get(17);
+    internal_static_MovieResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_MovieResponse_descriptor,
+        new java.lang.String[] { "Movie", });
+    internal_static_UploadMoviesRequest_descriptor =
+      getDescriptor().getMessageTypes().get(18);
+    internal_static_UploadMoviesRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_UploadMoviesRequest_descriptor,
+        new java.lang.String[] { "Movies", });
+    internal_static_UploadMoviesResponse_descriptor =
+      getDescriptor().getMessageTypes().get(19);
+    internal_static_UploadMoviesResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_UploadMoviesResponse_descriptor,
+        new java.lang.String[] { "Movies", "UploadedCount", });
+    internal_static_ListMoviesRequest_descriptor =
+      getDescriptor().getMessageTypes().get(20);
+    internal_static_ListMoviesRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ListMoviesRequest_descriptor,
+        new java.lang.String[] { });
+    internal_static_ListMoviesResponse_descriptor =
+      getDescriptor().getMessageTypes().get(21);
+    internal_static_ListMoviesResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ListMoviesResponse_descriptor,
+        new java.lang.String[] { "Movies", });
+    internal_static_GetMovieStreamRequest_descriptor =
+      getDescriptor().getMessageTypes().get(22);
+    internal_static_GetMovieStreamRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_GetMovieStreamRequest_descriptor,
+        new java.lang.String[] { "MovieId", });
+    internal_static_MovieStreamResponse_descriptor =
+      getDescriptor().getMessageTypes().get(23);
+    internal_static_MovieStreamResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_MovieStreamResponse_descriptor,
+        new java.lang.String[] { "MasterPlaylistUrl", "Qualities", "ProcessedForStreaming", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

@@ -14,6 +14,12 @@ service UserService {
   // Ticket-related methods
   rpc CreateTicket (CreateTicketRequest) returns (TicketResponse);
   rpc ListTickets (ListTicketsRequest) returns (ListTicketsResponse);
+
+  // Movie-related methods
+  rpc UploadMovie (UploadMovieRequest) returns (MovieResponse);
+  rpc UploadMovies (UploadMoviesRequest) returns (UploadMoviesResponse);
+  rpc ListMovies (ListMoviesRequest) returns (ListMoviesResponse);
+  rpc GetMovieStream (GetMovieStreamRequest) returns (MovieStreamResponse);
 }
 
 message User {
@@ -78,4 +84,62 @@ message ListTicketsRequest {
 
 message ListTicketsResponse {
   repeated Ticket tickets = 1;
+}
+
+// Movie-related messages
+message Movie {
+  int64 id = 1;
+  string title = 2;
+  string description = 3;
+  bytes file_data = 4;
+  string file_name = 5;
+  string content_type = 6;
+  string master_playlist_url = 7;
+  repeated StreamQuality qualities = 8;
+  bool processed_for_streaming = 9;
+}
+
+message StreamQuality {
+  string resolution = 1;
+  int64 bandwidth = 2;
+  string playlist_url = 3;
+  int32 width = 4;
+  int32 height = 5;
+}
+
+message UploadMovieRequest {
+  string title = 1;
+  string description = 2;
+  bytes file_data = 3;
+  string file_name = 4;
+  string content_type = 5;
+}
+
+message MovieResponse {
+  Movie movie = 1;
+}
+
+message UploadMoviesRequest {
+  repeated UploadMovieRequest movies = 1;
+}
+
+message UploadMoviesResponse {
+  repeated Movie movies = 2;
+  int32 uploaded_count = 3;
+}
+
+message ListMoviesRequest {}
+
+message ListMoviesResponse {
+  repeated Movie movies = 1;
+}
+
+message GetMovieStreamRequest {
+  int64 movie_id = 1;
+}
+
+message MovieStreamResponse {
+  string master_playlist_url = 1;
+  repeated StreamQuality qualities = 2;
+  bool processed_for_streaming = 3;
 }
