@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "FChvweNOqPOUhHQ+9xXMqYN3Rm+7BW3Gq7XN7sfxMwg=",
+  "Source": "Cinmax-Api-Gateway",
+  "BasePath": "_content/Cinmax-Api-Gateway",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

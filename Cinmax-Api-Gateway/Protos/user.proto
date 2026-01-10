@@ -1,0 +1,198 @@
+syntax = "proto3";
+
+option csharp_namespace = "Cinmax.Api.Gateway.Protos";
+
+service UserService {
+  rpc GetUser (GetUserRequest) returns (UserResponse);
+  rpc UpdateUser (UpdateUserRequest) returns (UserResponse);
+  rpc DeleteUser (DeleteUserRequest) returns (DeleteUserResponse);
+  rpc ListUsers (ListUsersRequest) returns (ListUsersResponse);
+
+  // Ticket-related methods
+  rpc CreateTicket (CreateTicketRequest) returns (TicketResponse);
+  rpc ListTickets (ListTicketsRequest) returns (ListTicketsResponse);
+
+  // Movie-related methods
+  rpc UploadMovie (UploadMovieRequest) returns (MovieResponse);
+  rpc UploadMovies (UploadMoviesRequest) returns (UploadMoviesResponse);
+  rpc ListMovies (ListMoviesRequest) returns (ListMoviesResponse);
+  rpc GetMovieStream (GetMovieStreamRequest) returns (MovieStreamResponse);
+  rpc DeleteMovie (DeleteMovieRequest) returns (DeleteMovieResponse);
+  rpc GetMovieCinematicDetails (GetMovieCinematicDetailsRequest) returns (GetMovieCinematicDetailsResponse);
+}
+
+message User {
+  int64 id = 1;
+  string name = 2;
+  string email = 3;
+  repeated Ticket tickets = 4;
+}
+
+message Ticket {
+  string ticket_id = 1;
+  int64 user_id = 2;
+  string movie_name = 3;
+}
+
+message UserMovie {
+  int64 user_id = 1;
+  string ticket_id = 2;
+  int64 movie_id = 3;
+  string rental_type = 4;
+  int32 rental_duration = 5;
+  string purchase_date = 6;
+  string expiry_date = 7;
+}
+
+message Payment {
+  string payment_id = 1;
+  int64 user_id = 2;
+  int64 movie_id = 3;
+  double amount = 4;
+  string status = 5;
+  string payment_date = 6;
+  string ticket_id = 7;
+  string rental_type = 8;
+  int32 rental_duration = 9;
+}
+
+message GetUserRequest {
+  int64 id = 1;
+}
+
+message UpdateUserRequest {
+  int64 id = 1;
+  string name = 2;
+  string email = 3;
+}
+
+message DeleteUserRequest {
+  int64 id = 1;
+}
+
+message DeleteUserResponse {
+  bool success = 1;
+}
+
+message UserResponse {
+  User user = 1;
+}
+
+message ListUsersRequest {}
+
+message ListUsersResponse {
+  repeated User users = 1;
+}
+
+// Ticket-related messages
+message CreateTicketRequest {
+  int64 user_id = 1;
+  string movie_name = 2;
+}
+
+message TicketResponse {
+  Ticket ticket = 1;
+}
+
+message ListTicketsRequest {
+  int64 user_id = 1;
+}
+
+message ListTicketsResponse {
+  repeated Ticket tickets = 1;
+}
+
+// Movie-related messages
+message Movie {
+  int64 id = 1;
+  string title = 2;
+  string description = 3;
+  string s3_url = 4;
+  string file_name = 5;
+  string content_type = 6;
+  int64 file_size = 7;
+  string master_playlist_url = 8;
+  repeated StreamQuality qualities = 9;
+  bool processed_for_streaming = 10;
+  double buy_price = 11;
+  double rental_price = 12;
+  repeated int32 rental_durations = 13;
+  string cinematic_quality_description = 14;
+  string category = 15;
+}
+
+message StreamQuality {
+  string resolution = 1;
+  int64 bandwidth = 2;
+  string playlist_url = 3;
+  int32 width = 4;
+  int32 height = 5;
+}
+
+message UploadMovieRequest {
+  string title = 1;
+  string description = 2;
+  string category = 3;
+  bytes file_data = 4;
+  string file_name = 5;
+  string content_type = 6;
+}
+
+message MovieResponse {
+  Movie movie = 1;
+}
+
+message UploadMoviesRequest {
+  repeated UploadMovieRequest movies = 1;
+}
+
+message UploadMoviesResponse {
+  repeated Movie movies = 2;
+  int32 uploaded_count = 3;
+}
+
+message ListMoviesRequest {
+  int32 page = 1;
+  int32 size = 2;
+}
+
+message ListMoviesResponse {
+  repeated Movie movies = 1;
+  int32 current_page = 2;
+  int32 page_size = 3;
+  int32 total_pages = 4;
+  int64 total_elements = 5;
+}
+
+message GetMovieStreamRequest {
+  int64 movie_id = 1;
+  string ticket_id = 2;
+  int64 user_id = 3;
+}
+
+message MovieStreamResponse {
+  string master_playlist_url = 1;
+  repeated StreamQuality qualities = 2;
+  bool processed_for_streaming = 3;
+}
+
+message DeleteMovieRequest {
+  int64 movie_id = 1;
+}
+
+message DeleteMovieResponse {
+  bool success = 1;
+}
+
+// GetMovieCinematicDetails messages
+message GetMovieCinematicDetailsRequest {
+  int64 movie_id = 1;
+}
+
+message GetMovieCinematicDetailsResponse {
+  string cinematic_quality_description = 1;
+  double cinematic_quality_score = 2;
+  double story_quality_score = 3;
+  double overall_rating = 4;
+  string pricing_tier = 5;
+}

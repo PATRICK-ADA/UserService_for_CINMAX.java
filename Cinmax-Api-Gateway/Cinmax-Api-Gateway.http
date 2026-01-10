@@ -1,0 +1,92 @@
+@Cinmax_Api_Gateway_HostAddress = http://localhost:5123
+
+GET {{Cinmax_Api_Gateway_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
+# User endpoints
+POST {{Cinmax_Api_Gateway_HostAddress}}/api/users
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "email": "john@example.com"
+}
+
+###
+
+GET {{Cinmax_Api_Gateway_HostAddress}}/api/users
+Accept: application/json
+
+###
+
+GET {{Cinmax_Api_Gateway_HostAddress}}/api/users/1
+Accept: application/json
+
+###
+
+PUT {{Cinmax_Api_Gateway_HostAddress}}/api/users/1
+Content-Type: application/json
+
+{
+  "name": "John Updated",
+  "email": "john.updated@example.com"
+}
+
+###
+
+DELETE {{Cinmax_Api_Gateway_HostAddress}}/api/users/1
+Accept: application/json
+
+###
+
+# Ticket endpoints
+POST {{Cinmax_Api_Gateway_HostAddress}}/api/tickets
+Content-Type: application/json
+
+{
+  "userId": 1,
+  "movieName": "Test Movie"
+}
+
+###
+
+GET {{Cinmax_Api_Gateway_HostAddress}}/api/tickets?userId=1
+Accept: application/json
+
+###
+
+# Movie endpoints
+GET {{Cinmax_Api_Gateway_HostAddress}}/api/movies?page=1&size=10
+Accept: application/json
+
+###
+
+GET {{Cinmax_Api_Gateway_HostAddress}}/api/movies/1/stream
+Accept: application/json
+
+###
+
+# Payment endpoints
+POST {{Cinmax_Api_Gateway_HostAddress}}/api/payments/initialize
+Content-Type: application/json
+
+{
+  "userId": 1,
+  "movieId": 1,
+  "movieName": "Test Movie",
+  "amount": 100.00,
+  "email": "user@example.com"
+}
+
+###
+
+POST {{Cinmax_Api_Gateway_HostAddress}}/api/payments/verify
+Content-Type: application/json
+
+{
+  "reference": "test-reference"
+}
+
+###
