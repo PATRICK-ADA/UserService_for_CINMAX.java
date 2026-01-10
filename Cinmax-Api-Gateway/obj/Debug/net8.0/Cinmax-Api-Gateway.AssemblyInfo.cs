@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Cinmax-Api-Gateway")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b4c8c9164d966db914054446326f0e07107c17b9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7793e47722ca5296bcbd12fc59ef54c2d586a964")]
 [assembly: System.Reflection.AssemblyProductAttribute("Cinmax-Api-Gateway")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Cinmax-Api-Gateway")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

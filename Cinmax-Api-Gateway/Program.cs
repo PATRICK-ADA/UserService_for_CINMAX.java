@@ -15,6 +15,10 @@ using BCrypt.Net;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Configure port for Cloud Run
+var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+builder.WebHost.UseUrls($"http://+:{port}");
+
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
